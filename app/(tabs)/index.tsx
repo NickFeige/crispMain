@@ -1,75 +1,129 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from "react";
+import { StyleSheet, Text, View, Pressable, Image } from "react-native";
+import { Entypo } from "@expo/vector-icons";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+const Cat = () => {
+  const items = [
+    { name: "Carrot", price: "$0.60", image: require("@/assets/images/carrot.jpg") },
+    { name: "Broccoli", price: "$2.00", image: require("@/assets/images/broccoli.jpg") },
+    { name: "Tomato", price: "$1.50", image: require("@/assets/images/tomatoes.jpg") },
+  ];
 
-export default function HomeScreen() {
+  const [index, setIndex] = useState(0);
+
+  // AUTO-CYCLE every 15 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % items.length);
+    }, 8000); // 8 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const prevItem = () =>
+    setIndex((prev) => (prev - 1 + items.length) % items.length);
+
+  const nextItem = () =>
+    setIndex((prev) => (prev + 1) % items.length);
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+    <View style={styles.container}>
+      <Text style={styles.crisp}>CRISP</Text>
+
+      {/* IMAGE CAROUSEL */}
+      <View style={styles.carousel}>
+        <Pressable onPress={prevItem} style={styles.arrowButton}>
+          <Entypo name="chevron-left" size={40} color="#FFCC00" />
+        </Pressable>
+
+        <Image source={items[index].image} style={styles.image} resizeMode="contain" />
+
+        <Pressable onPress={nextItem} style={styles.arrowButton}>
+          <Entypo name="chevron-right" size={40} color="#FFCC00" />
+        </Pressable>
+      </View>
+
+      {/* DOTS */}
+      <View style={styles.dotsContainer}>
+        {items.map((_, i) => (
+          <View
+            key={i}
+            style={[
+              styles.dot,
+              index === i && styles.dotActive,
+            ]}
+          />
+        ))}
+      </View>
+
+      {/* TITLE */}
+      <Text style={styles.title}>{items[index].name}</Text>
+      <Text style={styles.price}>{items[index].price}</Text>
+
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+
+  container: {
+    backgroundColor: "#FFFFFF",
+    alignItems: "center",
+    paddingTop: 40,
+    flex: 1,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  crisp: { alignSelf: 'flex-start', 
+    fontSize: 50, 
+    fontWeight: '700', 
+    color: '#fd9696', 
+    marginBottom: 10, },
+
+  carousel: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+
+  arrowButton: {
+    padding: 10,
+  },
+
+  image: {
+    width: 300,
+    height: 220,
+  },
+
+  dotsContainer: {
+    flexDirection: "row",
+    marginTop: 15,
+  },
+
+  dot: {
+    width: 25,
+    height: 4,
+    borderRadius: 2,
+    backgroundColor: "#E0E0E0",
+    marginHorizontal: 3,
+  },
+
+  dotActive: {
+    backgroundColor: "#FFCC00",
+  },
+
+  title: {
+    fontSize: 32,
+    fontWeight: "800",
+    marginTop: 30,
+    textAlign: "center",
+  },
+
+  price: {
+    fontSize: 22,
+    fontWeight: "600",
+    marginTop: 5,
+    color: "#444",
   },
 });
+
+export default Cat;
