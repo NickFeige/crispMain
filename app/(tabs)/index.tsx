@@ -87,19 +87,20 @@ const Cat = () => {
 
 const styles = StyleSheet.create({
   scrollContent: {
-    paddingBottom: 80,
+    paddingBottom: 0,
   },
   container: {
     backgroundColor: "#FFFFFF",
     alignItems: "center",
     paddingTop: 40,
+    paddingBottom: 50,
   },
   crisp: {
     alignSelf: "flex-start",
     fontSize: 50,
     fontWeight: "700",
     color: "#fd9696",
-    marginBottom: 10,
+    marginBottom: 0,
     marginLeft: 5,
   },
   carousel: {
@@ -112,8 +113,9 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   image: {
-    width: 300,
-    height: 220,
+    flexShrink: 300,
+    height: 280,
+    width:600
   },
   dotsContainer: {
     flexDirection: "row",
@@ -132,7 +134,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: "800",
-    marginTop: 30,
+    marginTop: 20,
     textAlign: "center",
   },
   price: {
