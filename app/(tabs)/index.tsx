@@ -4,9 +4,9 @@ import { Entypo } from "@expo/vector-icons";
 
 const Cat = () => {
   const items = [
-    { name: "Carrot", price: "$0.60", image: require("@/assets/images/carrot.jpg") },
+    { name: "Carrot", price: "$5.00/KG", image: require("@/assets/images/carrot.jpg") },
     { name: "Broccoli", price: "$2.00", image: require("@/assets/images/broccoli.jpg") },
-    { name: "Tomato", price: "$1.50", image: require("@/assets/images/tomatoes.jpg") },
+    { name: "Tomato", price: "$9.99/KG", image: require("@/assets/images/tomatoes.jpg") },
   ];
 
   const [index, setIndex] = useState(0);
@@ -33,8 +33,8 @@ const Cat = () => {
 
         {/* CAROUSEL */}
         <View style={styles.carousel}>
-          <Pressable onPress={prevItem} style={styles.arrowButton}>
-            <Entypo name="chevron-left" size={40} color="#FFCC00" />
+          <Pressable onPress={prevItem} style={styles.arrowButton} >
+            <Entypo name="chevron-left" size={40} color="#fd9696"/>
           </Pressable>
 
           <Image
@@ -44,7 +44,7 @@ const Cat = () => {
           />
 
           <Pressable onPress={nextItem} style={styles.arrowButton}>
-            <Entypo name="chevron-right" size={40} color="#FFCC00" />
+            <Entypo name="chevron-right" size={40} color="#fd9696"/>
           </Pressable>
         </View>
 
@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
   },
   arrowButton: {
     padding: 10,
+    
   },
   image: {
     flexShrink: 300,
@@ -130,19 +131,20 @@ const styles = StyleSheet.create({
     marginHorizontal: 3,
   },
   dotActive: {
-    backgroundColor: "#FFCC00",
+    backgroundColor: "#fd9696",
   },
   title: {
     fontSize: 32,
     fontWeight: "800",
     marginTop: 20,
     textAlign: "center",
+    color:"#fd9696"
   },
   price: {
     fontSize: 22,
     fontWeight: "600",
     marginTop: 5,
-    color: "#444",
+    color: "#fd9696",
   },
   title2: {
     fontSize: 40,
@@ -159,7 +161,7 @@ const styles = StyleSheet.create({
   },
   zoomContainer: {
     width: "100%",
-    height: 600,
+    height: "100%",
     backgroundColor: "#fff",
   },
 });
