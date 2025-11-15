@@ -79,6 +79,7 @@ const Cat = () => {
             resizeMode="contain"
           />
         </ScrollView>
+        <Text style={styles.title2}>FRUIT BOX</Text>
 
       </View>
     </ScrollView>
