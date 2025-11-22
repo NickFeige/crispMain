@@ -1,6 +1,7 @@
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import { Tabs } from 'expo-router';
 import React from 'react';
+import { Ionicons } from "@expo/vector-icons";
 
 export default function TabLayout() {
   return (
@@ -10,7 +11,7 @@ export default function TabLayout() {
          tabBarActiveTintColor: '#fff',  // <-- sets active tab text & icon color
         tabBarInactiveTintColor: '#fd9696',
         tabBarActiveBackgroundColor:'#fd9696',
-        tabBarInactiveBackgroundColor:'#fff'
+        tabBarInactiveBackgroundColor:'#ffffee'
         
       }}>
       <Tabs.Screen
@@ -25,9 +26,9 @@ export default function TabLayout() {
       <Tabs.Screen
         name="explore"
         options={{
-          title: 'About',
+          title: 'Cafe',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="paperplane.fill" color={color} />
+            <Ionicons name="cafe-outline" size={28} color={color} />
           ),
         }}
       />
