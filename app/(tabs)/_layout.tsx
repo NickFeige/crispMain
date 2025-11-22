@@ -2,8 +2,16 @@ import { IconSymbol } from '@/components/ui/IconSymbol';
 import { Tabs } from 'expo-router';
 import React from 'react';
 import { Ionicons } from "@expo/vector-icons";
+import { useFonts } from "expo-font";
 
 export default function TabLayout() {
+      const [fontsLoaded] = useFonts({
+    Sawarabi: require("@/assets/fonts/SawarabiMincho-Regular.ttf"),
+  });
+  
+  if (!fontsLoaded) {
+    return null; // or Loading screen
+  }
   return (
     <Tabs
       screenOptions={{
@@ -19,8 +27,10 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="house.fill" color={color}/>
+          <Ionicons name="nutrition-outline" size={24} color={color} />
           ),
+          tabBarLabelStyle: { fontFamily: "Sawarabi",fontSize: 13},
+          
         }}
       />
       <Tabs.Screen
@@ -28,8 +38,9 @@ export default function TabLayout() {
         options={{
           title: 'Cafe',
           tabBarIcon: ({ color }) => (
-            <Ionicons name="cafe-outline" size={28} color={color} />
+            <Ionicons name="cafe-outline" size={24} color={color} />
           ),
+          tabBarLabelStyle: { fontFamily: "Sawarabi",fontSize: 13 },
         }}
       />
     </Tabs>

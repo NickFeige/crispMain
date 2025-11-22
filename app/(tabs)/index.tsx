@@ -6,7 +6,7 @@ import { useFonts } from "expo-font";
 const Cat = () => {
 
   const items = [
-    { name: "Carrot", price: "$5.00/KG", image: require("@/assets/images/carrot.jpg") },
+    { name: "Carrot", price: "$5.00/KG", image: require("@/assets/images/carrot2.png") },
     { name: "Broccoli", price: "$2.00", image: require("@/assets/images/broccoli.jpg") },
     { name: "Tomato", price: "$9.99/KG", image: require("@/assets/images/tomatoe2.png") },
   ];
@@ -133,7 +133,12 @@ if (!fontsLoaded) {
           
         
         </View>
+        
         <Text style={styles.text}>CONNECTION</Text>
+        <View style={styles.connectionRow}>
+  
+  {/* LEFT SIDE (Phone numbers) */}
+  <View style={styles.leftColumn}>
          <Pressable
             style={styles.contactRow}
             onPress={() => Linking.openURL("mailto:simon@realcrisp.co.nz")}
@@ -150,9 +155,28 @@ if (!fontsLoaded) {
             <Entypo name="instagram" size={24} color="#fd9696" style={styles.icon} />
             <Text style={styles.contactText}>crisp_nz</Text>
           </Pressable>
+          </View>
+           <View style={styles.rightColumn}>
+            <Pressable
+            style={styles.contactRow2}
+            onPress={() => Linking.openURL("tel:033669883")}
+          >
+            <Entypo name="phone" size={24} color="#fd9696" style={styles.icon} />
+            <Text style={styles.contactText}>EDGEWARE:033669883</Text>
+          </Pressable>
+           <Pressable
+            style={styles.contactRow2}
+            onPress={() => Linking.openURL("tel:033237805")}
+          >
+            <Entypo name="phone" size={24} color="#fd9696" style={styles.icon} />
+            <Text style={styles.contactText}>NORTHWOOD:033237805</Text>
+          </Pressable>
         
               </View>
+              
 
+      </View>
+      </View>
       </View>
     </ScrollView>
   );
@@ -188,6 +212,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
+    
   },
   arrowButton: {
     padding: 10,
@@ -196,7 +221,10 @@ const styles = StyleSheet.create({
   image: {
     flexShrink: 300,
     height: 280,
-    width:600
+    width:600,
+    borderColor:"#fd9696",
+    borderWidth: 2.5,
+    borderRadius: 12,
   },
   dotsContainer: {
     flexDirection: "row",
@@ -217,7 +245,7 @@ const styles = StyleSheet.create({
     fontWeight: "800",
     marginTop: 20,
     textAlign: "center",
-    color:"#fd9696"
+    color:"#fd9696",
   },
   price: {
     fontSize: 22,
@@ -235,7 +263,9 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: '600',
     color: '#fd9696',
-    marginBottom: 10,
+    marginBottom: 5,
+    fontFamily: "Sawarabi",
+   
   },
 
   text2: {
@@ -244,6 +274,9 @@ const styles = StyleSheet.create({
     color: '#fd9696',
     marginHorizontal: 20,
     marginBottom: 20,
+    fontFamily: "Sawarabi",
+     marginRight: 40,
+    marginLeft:40
   },
 
   locationRow: {
@@ -258,6 +291,7 @@ locationCard: {
   flex: 1,
   alignItems: "center",
   paddingHorizontal: 10,
+  
 },
 
 locationHeader: {
@@ -274,19 +308,46 @@ staticMap: {
   borderRadius: 12,
   marginBottom: 20,
   backgroundColor: "#eee",
+  borderColor:"#fd9696",
+  borderWidth: 2.5
 },
-contactSection: {
-  marginTop: 30,
-  width: "100%",
-  alignItems: "center",
+connectionRow: {
+  flexDirection: "row",
+  justifyContent: "space-between",
+  width: "95%",
+  paddingHorizontal: 20,
+  marginTop: 20,
+    borderColor:"#fd9696",
+    borderWidth: 2.5,
+    borderRadius: 12,
+    
 },
 
 contactRow: {
-  flexDirection: "row",
+ flexDirection: "row",
   alignItems: "center",
+  justifyContent: "flex-start",   // RIGHT SIDE
   marginVertical: 8,
+  width: "70%",
+},
+contactRow2: {
+ flexDirection: "row",
+  alignItems: "center",
+  justifyContent: "flex-end", // LEFT SIDE
+  marginVertical: 8,
+  width: "70%",
 },
 
+leftColumn: {
+  flex: 1,
+  justifyContent: "flex-end",
+},
+
+rightColumn: {
+  flex: 1,
+  alignItems: "flex-end",
+  justifyContent: "flex-start",
+},
 icon: {
   marginRight: 10,
 },

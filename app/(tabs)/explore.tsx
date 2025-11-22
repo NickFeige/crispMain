@@ -1,7 +1,15 @@
 import React from 'react';
 import {StyleSheet,Text,View,Image,ScrollView } from 'react-native';
+import { useFonts } from "expo-font";
 
 const About = () => {
+   const [fontsLoaded] = useFonts({
+    Sawarabi: require("@/assets/fonts/SawarabiMincho-Regular.ttf"),
+  });
+  
+  if (!fontsLoaded) {
+    return null; // or Loading screen
+  }
   return (
     <ScrollView style={{ flex: 1, backgroundColor: "#fff" }}>
       <View style={styles.container}>
@@ -46,6 +54,7 @@ const styles = StyleSheet.create({
     color: '#fd9696',
     marginBottom: 10,
     marginLeft: 5,
+    fontFamily: "Sawarabi",
   },
 
   text: {
@@ -72,14 +81,19 @@ const styles = StyleSheet.create({
 
   zoomContainer: {
     width: "95%",
-    height: "100%",
+    height: "80%",
     backgroundColor: "#ffffee",
+    borderColor:"#fd9696",
+    borderWidth: 2.5,
+    borderRadius: 12,
   },
    title2: {
     fontSize: 32,
     fontWeight: "800",
     marginTop: 50,
     color: "#fd9696",
+    fontFamily: "Sawarabi",
+    marginBottom: 10,
   },
 });
 
