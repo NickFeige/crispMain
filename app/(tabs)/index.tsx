@@ -225,6 +225,7 @@ const styles = StyleSheet.create({
     borderColor:"#fd9696",
     borderWidth: 2.5,
     borderRadius: 12,
+    backgroundColor:"#fbfbf2"
   },
   dotsContainer: {
     flexDirection: "row",
@@ -263,8 +264,9 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: '600',
     color: '#fd9696',
-    marginBottom: 5,
+    marginBottom: 20,
     fontFamily: "Sawarabi",
+   
    
   },
 
@@ -276,7 +278,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     fontFamily: "Sawarabi",
      marginRight: 40,
-    marginLeft:40
+    marginLeft:40,
+    backgroundColor:"#fbfbf2",
+    borderColor:"#fd9696",
+    borderWidth: 2.5,
+    borderRadius: 12,
+    padding:20
+
   },
 
   locationRow: {
@@ -320,6 +328,7 @@ connectionRow: {
     borderColor:"#fd9696",
     borderWidth: 2.5,
     borderRadius: 12,
+    backgroundColor:"#fbfbf2"
     
 },
 

@@ -82,10 +82,10 @@ const styles = StyleSheet.create({
   zoomContainer: {
     width: "95%",
     height: "80%",
-    backgroundColor: "#ffffee",
     borderColor:"#fd9696",
     borderWidth: 2.5,
     borderRadius: 12,
+    backgroundColor:"#fbfbf2"
   },
    title2: {
     fontSize: 32,
