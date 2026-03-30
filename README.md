@@ -20,11 +20,16 @@ welcome to this expo app the aim of this project is to create a information webs
 ```bash
 -A carousel cyceling through featured specials
 ```
+```bash
 -Clickable Google maps apis that when clicked navigate to the location of the two location 
--Connections features that navigate you to the intended contacts 
+   ```
+```bash
+-Connections features that navigate you to the intended contacts
+   ```
+```bash 
 -Menu that has a dedicated zoo spot (works for mobile devices with the touch screen)
-
-## Learn more
+   ```
+##   Learn more
 
 
 
